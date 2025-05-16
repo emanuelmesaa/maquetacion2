@@ -1,19 +1,19 @@
-/* src/index.css */
+
 body {
-  margin: 0; /* Quita los márgenes por defecto del navegador */
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif; /* Una fuente bonita y común */
-  -webkit-font-smoothing: antialiased; /* Hace que el texto se vea más suave en algunos navegadores */
+    sans-serif;
+  -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
-  color: #333; /* Color de texto base oscuro */
-  line-height: 1.6; /* Espacio entre líneas de texto para mejor lectura */
+  color: #333; 
+  line-height: 1.6; 
 }
 
-/* Estilos para títulos */
+
 h1, h2, h3, h4, h5, h6 {
-  color: #1a2b3c; /* Un color un poco más oscuro para títulos */
-  margin-top: 1.5em; /* Espacio arriba de los títulos */
-  margin-bottom: 0.5em; /* Espacio debajo de los títulos */
+  color: #1a2b3c;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 h1 { font-size: 2.2em; }
@@ -21,20 +21,20 @@ h2 { font-size: 1.8em; }
 h3 { font-size: 1.5em; }
 
 p {
-  margin-bottom: 1em; /* Espacio debajo de los párrafos */
+  margin-bottom: 1em;
 }
 
 a {
-  color: #007bff; /* Color azul estándar para enlaces */
-  text-decoration: none; /* Quita el subrayado por defecto */
+  color: #007bff;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline; /* Subraya al pasar el mouse */
+  text-decoration: underline;
 }
 
-/* Un estilo básico para botones, lo mejoraremos luego con un componente Button.jsx */
-button, .button-link { /* .button-link es para enlaces que parecen botones */
+
+button, .button-link { 
   display: inline-block;
   background-color: #007bff;
   color: white;
@@ -49,10 +49,10 @@ button, .button-link { /* .button-link es para enlaces que parecen botones */
 }
 
 button:hover, .button-link:hover {
-  background-color: #0056b3; /* Un azul más oscuro al pasar el mouse */
+  background-color: #0056b3;
 }
 
-/* Estilo básico para inputs */
+
 input[type="text"],
 input[type="email"],
 input[type="search"],
@@ -62,7 +62,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1em;
-  width: calc(100% - 22px); /* Ocupa el ancho disponible menos padding y borde */
-  box-sizing: border-box; /* Para que el padding no sume al ancho */
-  margin-bottom: 10px; /* Espacio debajo */
+  width: calc(100% - 22px);
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }

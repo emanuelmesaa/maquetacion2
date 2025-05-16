@@ -1,14 +1,21 @@
-// src/pages/DetalleClientePage.jsx
+import ana from '../assets/avatars/ana.jpg';
+import carlos from '../assets/avatars/carlos.jpg';
+import javier from '../assets/avatars/javier.jpeg';
+import laura from '../assets/avatars/laura.jpeg';
+import luis from '../assets/avatars/luis.jpg';
+import sofia from '../assets/avatars/sofia.jpeg';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import WireFrameButton from '../components/WireFrameButton.jsx';
 
+
+const clientImg = [ana, luis, carlos, sofia, javier, laura];  
 const getClientData = (id) => {
-  const baseId = parseInt(id, 10) || 1; // Asegura que baseId sea al menos 1
+  const baseId = parseInt(id, 10) || 1; 
   const names = ["Ana García", "Luis Martínez", "Carlos Rodríguez", "Sofía Hernández", "Javier López", "Laura Gómez"];
   const genders = ["female", "male", "male", "female", "male", "female"];
-  const emails = ["ana.g@example.com", "luis.m@example.com", "carlos.r@example.com", "sofia.h@example.com", "javier.l@example.com", "laura.g@example.com"];
-  const phones = ["+111222333", "+222333444", "+333444555", "+444555666", "+555666777", "+666777888"];
+  const emails = ["ana.g@gmail.com", "luis.m@gmail.com", "carlos.r@gmail.com", "sofia.h@gmail.com", "javier.l@gmail.com", "laura.g@gmail.com"];
+  const phones = ["+24821826", "+142036589", "+120365987", "+1232057", "+752369528", "+202546325"];
   const regDates = ["15/01/2023", "03/03/2023", "21/05/2023", "10/07/2023", "01/09/2023", "18/11/2022"];
   const historyItemsList = [
     ["Compra #123 - Laptop Pro X - 15/07/2023", "Soporte #45 - Consulta Factura - 10/07/2023"],
@@ -31,15 +38,13 @@ const getClientData = (id) => {
     highlight: highlights[index] || "Información general del cliente."
   };
 };
- const svgAvatarPlaceholder = (width, height, bgColor = '#DDDDDD', borderColor = '#666666', text = 'Perfil') => {
-     const svgText = text ? `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="${Math.min(width, height) * 0.2}" fill="#555">${text}</text>` : ''; return `data:image/svg+xml;charset=utf-8,${encodeURIComponent( `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect width="100%" height="100%" fill="${bgColor}" stroke="${borderColor}" stroke-width="1"/><circle cx="50%" cy="50%" r="40%" fill="rgba(0,0,0,0.05)" /><circle cx="50%" cy="35%" r="15%" fill="rgba(0,0,0,0.1)" /><ellipse cx="50%" cy="80%" rx="25%" ry="15%" fill="rgba(0,0,0,0.1)" />${svgText}</svg>` )}`;
- };
-
 
 function DetalleClientePage() {
   let { clienteId } = useParams();
   const clientData = getClientData(clienteId);
-  const profileImageUrl = `https://xsgames.co/randomusers/avatar.php?g=${clientData.gender}&key=profileDetail${clienteId}`;
+  const index = (parseInt(clienteId, 10) || 1) - 1;
+  const profileImageUrl = clientImg[(index + clientImg.length) % clientImg.length];
+  
 
   return (
     <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

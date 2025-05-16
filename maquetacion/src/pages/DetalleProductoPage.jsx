@@ -1,7 +1,15 @@
-// src/pages/DetalleProductoPage.jsx
+import camara from '../assets/products/camara.png';  
+import audi from '../assets/products/audi.png';  
+import kboard from '../assets/products/kboard.png';  
+import portatil from '../assets/products/portatil.png';  
+import screen from '../assets/products/screen.png';  
+import phone from '../assets/products/phone.png';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import WireFrameButton from '../components/WireFrameButton.jsx';
+
+
+const productImages = [portatil, phone, kboard, screen, audi, camara];
 
 const getProductData = (id) => {
   const baseId = parseInt(id, 10) || 1;
@@ -20,12 +28,7 @@ const getProductData = (id) => {
   const categories = ["Portátiles", "Móviles", "Periféricos PC", "Monitores", "Audio", "Webcams"];
   const index = (baseId - 1 + names.length) % names.length;
 
-  return { name: names[index], price: prices[index], description: descriptions[index], stock: stock[index], sku: skus[index], category: categories[index] };
-};
-const svgPlaceholder = (width, height, bgColor = '#CCCCCC', borderColor = '#555555', text = '') => {
-  const fontSize = Math.min(width, height) * (text.length > 10 ? 0.1 : 0.15);
-  const svgText = text ? `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="${fontSize}" fill="#333">${text}</text>` : '';
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent( `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect width="100%" height="100%" fill="${bgColor}" stroke="${borderColor}" stroke-width="1"/>${svgText}</svg>` )}`;
+  return { name: names[index], price: prices[index], description: descriptions[index], stock: stock[index], sku: skus[index], category: categories[index], img: productImages[index] };
 };
 
 
@@ -33,6 +36,7 @@ function DetalleProductoPage() {
   let { productoId } = useParams();
   const productData = getProductData(productoId);
 
+  
   return (
     <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ fontSize: '2em', fontWeight: 'normal', marginBottom: '30px' }}>
@@ -41,20 +45,10 @@ function DetalleProductoPage() {
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '90%', maxWidth: '1000px', marginBottom: '50px', alignItems: 'flex-start', gap: '40px' }}>
         <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <img
-            src={svgPlaceholder(400, 400, '#EAEAEA', '#999', `Producto ${productoId}`)}
+            src={productData.img}
             alt={`Imagen ${productData.name}`}
             style={{ width: '100%', maxWidth: '400px', height: 'auto', border: '2px solid black', marginBottom: '15px', objectFit: 'contain' }}
           />
-          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-            {[1, 2, 3].map(i => (
-              <img
-                key={i}
-                src={svgPlaceholder(70, 70, '#F0F0F0', '#AAA', `M${i}`)}
-                alt={`Miniatura ${i}`}
-                style={{ width: '70px', height: '70px', border: '1px solid #ccc', objectFit: 'cover', cursor: 'pointer' }}
-              />
-            ))}
-          </div>
         </div>
         <div style={{ flex: '1 1 400px', fontSize: '1em', lineHeight: '1.6' }}>
           <h2 style={{ marginTop: 0, fontSize: '1.5em', fontWeight: 'bold' }}>{productData.name}</h2>

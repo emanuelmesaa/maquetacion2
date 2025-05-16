@@ -1,6 +1,12 @@
-// src/pages/ListadoClientesPage.jsx
+import ana from '../assets/avatars/ana.jpg';
+import carlos from '../assets/avatars/carlos.jpg';
+import javier from '../assets/avatars/javier.jpeg';
+import laura from '../assets/avatars/laura.jpeg';
+import luis from '../assets/avatars/luis.jpg';
+import sofia from '../assets/avatars/sofia.jpeg';
 import React from 'react';
 import WireFrameButton from '../components/WireFrameButton.jsx';
+
 
 const sampleClients = [
   { name: "Ana García", summary: "Cliente frecuente, última compra hace 1 semana.", gender: "female" },
@@ -11,12 +17,8 @@ const sampleClients = [
   { name: "Laura Gómez", summary: "Activa desde 2022, cumpleaños próximo.", gender: "female" },
 ];
 
-const svgAvatarPlaceholder = (width, height, bgColor = '#EFEFEF', borderColor = '#CCC', text = 'Avatar') => {
-  const svgText = text ? `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="${Math.min(width, height) * 0.3}" fill="#555">${text}</text>` : '';
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect width="100%" height="100%" fill="${bgColor}" stroke="${borderColor}" stroke-width="1"/><circle cx="50%" cy="50%" r="40%" fill="rgba(0,0,0,0.05)" /><circle cx="50%" cy="35%" r="15%" fill="rgba(0,0,0,0.1)" /><ellipse cx="50%" cy="80%" rx="25%" ry="15%" fill="rgba(0,0,0,0.1)" />${svgText}</svg>`)}`;
-};
 
-
+const avatarImg = [ana, luis, carlos, sofia, javier, laura];
 function ListadoClientesPage() {
   return (
     <div style={{ padding: '30px 40px' }}>
@@ -24,7 +26,7 @@ function ListadoClientesPage() {
         {sampleClients.map((clientData, index) => (
           <div key={index} style={{ border: '2px solid black', height: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', padding: '20px', textAlign: 'center', borderRadius: '10px'}}>
             <img
-              src={`https://xsgames.co/randomusers/avatar.php?g=${clientData.gender}&key=client${index}`}
+              src={avatarImg[index]}
               alt={`Avatar ${clientData.name}`}
               style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', marginBottom: '15px', border: '1px solid #ccc', backgroundColor: '#eee' }}
               loading="lazy"

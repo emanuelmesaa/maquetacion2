@@ -1,13 +1,13 @@
-// src/pages/ListadoProductosPage.jsx
+import laptop from '../assets/products/laptop.png';
+import celular from '../assets/products/celular.png';
+import teclado from '../assets/products/teclado.png';
+import monitor from '../assets/products/monitor.png';
+import ear from '../assets/products/ear.png';
+import camarita from '../assets/products/camarita.png';
 import React from 'react';
 import WireFrameButton from '../components/WireFrameButton.jsx';
 import { RxFontBold } from 'react-icons/rx';
 
-const svgPlaceholder = (width, height, bgColor = '#EEEEEE', borderColor = '#CCCCCC', text = '') => {
-  const fontSize = Math.min(width, height) * (text.length > 5 ? 0.2 : 0.3); // Ajuste de fuente
-  const svgText = text ? `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="${fontSize}" fill="#555">${text}</text>` : '';
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent( `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect width="100%" height="100%" fill="${bgColor}" stroke="${borderColor}" stroke-width="1"/>${svgText}</svg>` )}`;
-};
 
 const sampleProducts = [
   { name: "Laptop Pro X", summary: "Alto rendimiento, pantalla 15\"." },
@@ -18,6 +18,8 @@ const sampleProducts = [
   { name: "Webcam HD 1080p", summary: "Micrófono incorporado, USB-C." },
 ];
 
+
+const productImg = [laptop, celular, teclado, monitor, ear, camarita];
 function ListadoProductosPage() {
   return (
     <div style={{ padding: '30px 40px' }}>
@@ -25,7 +27,7 @@ function ListadoProductosPage() {
         {sampleProducts.map((productData, index) => (
           <div key={index} style={{ border: '2px solid black', height: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', padding: '20px', textAlign: 'center', borderRadius: '10px'}}>
             <img
-              src={svgPlaceholder(80, 80, '#EEEEEE', '#ccc', `Prod ${index + 1}`)}
+              src={productImg[index]}
               alt={`Miniatura ${productData.name}`}
               style={{ width: '80px', height: '80px', objectFit: 'cover', marginBottom: '15px', border: '1px solid #ccc' }}
             />

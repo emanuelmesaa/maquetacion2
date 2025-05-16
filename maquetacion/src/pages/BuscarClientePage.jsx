@@ -1,4 +1,3 @@
-// src/pages/BuscarClientePage.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import WireFrameButton from '../components/WireFrameButton.jsx';
